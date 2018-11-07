@@ -5,9 +5,9 @@ highlighter:      rouge
 remote_theme:     fongandrew/hydeout
 
 # Setup
-title:            Mia Kim Blog
+title:            Mia 
 tagline:          'A Jekyll theme'
-description:      '좀 더 나은 Web Programmer가 되기 위한'
+description:      'To become a better web programmer...'
 url:              https://mia0406.github.io/
 baseurl:          #'/home'
                   # the optional subpath of your site, e.g. "/blog"
@@ -18,7 +18,7 @@ baseurl:          #'/home'
 
 author:
   name:           'Mia Kim'
-  url:            
+  url:
 
 paginate:         5
 # paginate_path:    '/page:num'
