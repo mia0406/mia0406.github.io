@@ -5,8 +5,6 @@ categories:
 title: Notion 사용해보며
 ---
 
-### Notion 사용해보며
-
 현재 나는 일하거나 공부를 진행할 때 notepad++와 trello를 주로 사용하고 있다. 그런데 notepad에 진행하는 code들과 내가 메모하는 것들이 섞이면서 정리가 안되는게 느끼다가 다른 툴을 찾아야겠다는 생각이 들었다. Evernote도 내 기준에서는 만족스럽지 않아서 다른 것을 찾아보다가 우연치 않게 Notion이라는 걸 발견했다.
 
 ![Notion](./img/notion.png)
