@@ -1,3 +1,9 @@
+---
+layout: post
+categories:
+  - Daily
+title: Notion 사용해보며
+---
 
 ### Notion 사용해보며
 
