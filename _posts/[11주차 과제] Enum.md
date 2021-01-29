@@ -1,30 +1,25 @@
+
 # 11주차 과제 : Enum
 
 ### 목표
-
 자바의 열거형에 대해 학습하세요.
 
 ### 학습할 것 (필수)
-
 - enum 정의하는 방법
 - enum이 제공하는 메소드(values()와 valueOf())
 - java.lang.Enum
 - EnumSet
-
 ---
+### 1. Enum 정의하는 방법
 
-## 1. Enum 정의하는 방법
-
-### (1) Enum이란?
-
+#### (1) Enum이란?
 - 관련이 있는 상수(고정값)들의 집합
 - Java 1.5부터 지원
 - java.lang 패키지의 최종 하위 클래스
 - 모든 enum 클래스는 java.lang.enum 이외에 상속을 받을 수 없다.
 - 모든 enum types은 reference type이며, 모든 enum type은 enum 선언으로 시작된다.
 
-### (2) 특징
-
+#### (2) 특징
 1. 모든 enum은 static final 성격을 가지고 있다.
 2. enum 인스턴스를 비교할 때 == 또는 .equals() 메소드 모두 가능 
     - == 연산자와 equals 메소드 모두 사용할 수 있는 이유?
@@ -55,17 +50,15 @@
     		break;
     }
     ```
-
-### (3) Enum을 사용하며 생기는 장점
-
+    
+#### (3) Enum을 사용하며 생기는 장점
 1. 코드가 단순해지면서 가독성이 좋아진다.
     - 클래스에 static final으로만 이용하여 상수를 정의하게 된다면, 상수가 많아질수록 관리하게 되는 코드가 복잡해지면서 가독성 ㅈㅈㅂㄱㅅㄴㅇㄹㅎㅋㅌㅊㅍㅠㅂ
 2. 인스턴스 생성과 상속을 방지하면서 상수의 안정성이 보장된다.
     - Interface로 구현했을 때와 다르게, enum을 사용하면 서로 다른 상수 그룹에 대한 비교를 컴파일 시점에서 차단할 수 있다
 3. Enum 키워드를 사용해서 구현의 의도가 열거임을 나타낼 수 있다.
 
-### (4) Enum 정의하는 방법
-
+#### (4) Enum 정의하는 방법
 ```java
 [''/public/protected/private] enum enumName {
 	// enum constants
@@ -98,14 +91,12 @@ enum Country {
 	}
 }
 ```
-
 - enum은 enum 상수(Enum constant)와 생성자(Constructor), 인스턴스(Instance field), 메소드(Method)로 구성
 1. Enum 상수 (Enum constant)
     - Enum 상수 이름은 대문자로 써주는 것이 좋다.
     - 주의점
         - Enum 상수를 생성자, 인스턴스, 메소드 뒤에 정의하게 되면 syntax error가 발생
         - String 형태가 아닌 int형은 사용할 수 없다.
-
         ```java
         enum Test{
         	TEST1, TEST2, 
@@ -125,9 +116,7 @@ enum Country {
     - enum 상수와 연관된 데이터를 상수 자체에 포함시켜 용이하게 관리하기 위해서 사용한다.
     - 인스턴스 변수를 사용하게 된다면 생성자를 overload하여 정의해야 한다.
 4. 메소드 (Method)
-
 - enum 클래스 안의 각 enum constants는 사실상 객체인데 그 객체 안의 인스턴스를 가지고 있는 것이다.
-
 ```java
 public enum Book{
 	// enum constants
@@ -178,16 +167,13 @@ public enumTest{
 }
 ```
 
-## 2. enum이 제공하는 메소드(values()와 valueOf())
-
+### 2. enum이 제공하는 메소드(values()와 valueOf())
 - 모든 enum에는 values()와 valueOf()라는 메소드가 내장
-
-### (1) values()
-
+- 
+#### (1) values()
 - 모든 enum마다 컴파일러는 values()라고 하는 static 메소드를 생성한다.
 - 우리가 선언한 모든 enum 상수 값을 배열 형태로 리턴
 - String 형태로 리턴하는 것이 아니라 인스턴스를 리턴해준다.
-
 ```java
 public enum Book{
 	JHTP("Java How to Program"),
@@ -214,11 +200,9 @@ public EnumTest{
 }
 ```
 
-### (2) valueOf()
-
+#### (2) valueOf()
 - 인자로 받은 String과 일치하는 enum 인스턴스가 존재하면 해당 인스턴스를 리턴
 - values()와 마찬가지로 String 형태가 아닌 인스턴스를 리턴
-
 ```java
 public enum Day{
 	MON, TUE, WEB, THU, FRI, SAT, SUN
@@ -231,14 +215,11 @@ public DayTest{
 		System.out.println("I say d and t are the same": " + (d == t)); //true
 	}
 }
-
 ```
 
-## 3. java.lang.Enum
-
+### 3. java.lang.Enum
 - enum을 새로 만드는 것은 사실 새로운 클래스를 만드는 것이다. 간접적으로 java.lang.Enum을 확장하여 클래스를 만드는 것
 - enum에는 생성자, 메소드, 변수 그리고 상수별 클래스 본체(constant-specific class body)라는 것도 추가할 수 있다.
-
 ```java
 public class MiaEnum {
 
@@ -281,8 +262,7 @@ public class MiaEnum {
 }
 ```
 
-## 4. EnumSet
-
+### 4. EnumSet
 - java.util 패키지에 정의
 - enum 타입에 사용하기 위한 Set
 - 비트 필드를 대신할 수 있는 기술 (비트 필드의 상위 호환)
