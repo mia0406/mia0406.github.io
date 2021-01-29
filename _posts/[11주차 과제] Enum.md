@@ -1,3 +1,9 @@
+---
+layout: post
+categories:
+  - Java
+title: [11주차 과제] Enum
+---
 
 # 11주차 과제 : Enum
 
@@ -17,16 +23,14 @@
 - Java 1.5부터 지원
 - java.lang 패키지의 최종 하위 클래스
 - 모든 enum 클래스는 java.lang.enum 이외에 상속을 받을 수 없다.
-- 모든 enum types은 reference type이며, 모든 enum type은 enum 선언으로 시작된다.
 
 #### (2) 특징
 1. 모든 enum은 static final 성격을 가지고 있다.
 2. enum 인스턴스를 비교할 때 == 또는 .equals() 메소드 모두 가능 
-    - == 연산자와 equals 메소드 모두 사용할 수 있는 이유?
-        - enum은 인스턴스를 생성할 수 없기 때문에 오직 하나의 인스턴스만 가질 수 있다. 하나의 인스턴스만 가질 수 있기 때문에 주소값을 비교하는 == 연산자를 사용해도, 실제값을 비교하는 equals 메소드를 사용해도 동일한 결과를 받을 수 있다.
+* == 연산자와 equals 메소드 모두 사용할 수 있는 이유?
+	* enum은 인스턴스를 생성할 수 없기 때문에 오직 하나의 인스턴스만 가질 수 있다. 하나의 인스턴스만 가질 수 있기 때문에 주소값을 비교하는 == 연산자를 사용해도, 실제값을 비교하는 equals 메소드를 사용해도 동일한 결과를 받을 수 있다.
     - 둘 다 사용해도 무방하나, == 을 쓰는 것을 더 권장
-        - (근거 1) == 은 equals() 메소드와 달리 유형 호환성 검사를 진행한다. 호환성 검사를 진행함으로써 서로 다른 enum 클래스 상수를 비교하는 컴파일 오류를 잡아낼 수 있다.
-            - equals 메소드를 사용하게 된다면 값 자체가 동일하다면 문제가 없을 것이라고 판단 내릴 것이다. 반면에 == 연산자는 주소값을 비교하기 때문에 컴파일 오류가 발생
+        - (근거 1) == 은 equals() 메소드와 달리 유형 호환성 검사를 진행한다. 호환성 검사를 진행함으로써 서로 다른 enum 클래스 상수를 비교하는 컴파일 오류를 잡아낼 수 있다. equals 메소드를 사용하게 된다면 값 자체가 동일하다면 문제가 없을 것이라고 판단 내릴 것이다. 반면에 == 연산자는 주소값을 비교하기 때문에 컴파일 오류가 발생하게 된다.
         - (근거 2) 또다른 의견은 enum은 싱글톤이기 때문에 ==와 equals 둘다 된다는 의견도 봄
 
     ```java
@@ -53,7 +57,7 @@
     
 #### (3) Enum을 사용하며 생기는 장점
 1. 코드가 단순해지면서 가독성이 좋아진다.
-    - 클래스에 static final으로만 이용하여 상수를 정의하게 된다면, 상수가 많아질수록 관리하게 되는 코드가 복잡해지면서 가독성 ㅈㅈㅂㄱㅅㄴㅇㄹㅎㅋㅌㅊㅍㅠㅂ
+	* 클래스에 static final으로만 이용하여 상수를 정의하게 된다면, 상수가 많아질수록 관리하게 되는 코드가 복잡해지면서 가독성 ↓
 2. 인스턴스 생성과 상속을 방지하면서 상수의 안정성이 보장된다.
     - Interface로 구현했을 때와 다르게, enum을 사용하면 서로 다른 상수 그룹에 대한 비교를 컴파일 시점에서 차단할 수 있다
 3. Enum 키워드를 사용해서 구현의 의도가 열거임을 나타낼 수 있다.
@@ -98,7 +102,7 @@ enum Country {
         - Enum 상수를 생성자, 인스턴스, 메소드 뒤에 정의하게 되면 syntax error가 발생
         - String 형태가 아닌 int형은 사용할 수 없다.
         ```java
-        enum Test{
+        enum Test {
         	TEST1, TEST2, 
         	1; // int형을 이용하여 enum 상수를 정의한다면 error!
         }
@@ -127,10 +131,6 @@ public enum Book{
 	// 인스턴스 필드
 	private final String title;
 	private final String copyrightYear; 
-	/*
-		여기서 그럼 궁금한건, enum 안에 int를 넣을수 없으니 그럼 여기 인스턴스도 그냥 String 말고는
-		선언하기 어려운거 아닌가?
-	*/
 
 	// constructor
 	Book(String bookTitle, String year){
@@ -148,7 +148,6 @@ public enum Book{
 
 public enumTest{
 	public static void main(String[] args){
-		// 내 이해 설명 위한 code
 		Book b = Book.JHTP; // JHTP, CHTP 이런게 각각 하나의 객체라고 생각하면 된다.
 		b.getTitle();
 		b.getCopyrightYear(); // 그래서 각 객체에 인스턴스를 가지고 있는 것이다라고 이해하면 편하다.
@@ -156,7 +155,6 @@ public enumTest{
 		// print all books in enum Book
 		for(Book book : Book.values()){
 			System.out.printf("%-10s%-45s%s\n", book, book,getTitle(), book.getCopyrightYear());
-			// 이게 enum constant를 String으로 convert하는 방법같은데....사용법이 뭐지?
 		}
 
 		// print first 2 books
@@ -169,7 +167,7 @@ public enumTest{
 
 ### 2. enum이 제공하는 메소드(values()와 valueOf())
 - 모든 enum에는 values()와 valueOf()라는 메소드가 내장
-- 
+
 #### (1) values()
 - 모든 enum마다 컴파일러는 values()라고 하는 static 메소드를 생성한다.
 - 우리가 선언한 모든 enum 상수 값을 배열 형태로 리턴
@@ -238,7 +236,6 @@ public class MiaEnum {
 		
 		private String instrument;
 		
-		// 생성자를 생성하지 않으니 위에 변수를 선언할 때 빨간줄이 그어지네?
 		Names(String instrument){
 			this.instrument = instrument;
 		}
